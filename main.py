@@ -327,5 +327,29 @@ cocaColaLabel.grid(sticky="w", row=5, column=0, padx=8, pady=8)
 cocaColaEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 cocaColaEntry.grid(row=5, column=1, padx=8, pady=8)
 
+# Bill Frame
 
+billFrame = Frame(productFrame, bd=8, relief=GROOVE)
+billFrame.grid(row=0, column=3, padx=10)
+
+billAreaLabel = Label(
+    billFrame,
+    text="Bill Area",
+    font=("times new roman", 15, "bold"),
+    bd=7,
+    relief=GROOVE,
+)
+billAreaLabel.pack(fill=X)
+
+# scroll bar
+scrollbar = Scrollbar(billFrame, orient=VERTICAL)
+# orient is for we want horizontal or vertical scroll bars
+scrollbar.pack(side=RIGHT, fill=Y)
+
+textArea = Text(billFrame, height=19, width=55, yscrollcommand=scrollbar.set)
+# yscrollcommand is to move the scrollbar automatically along with content
+
+textArea.pack()
+scrollbar.config(command=textArea.yview)
+# the above is for upward movement for scrollbar when content is present
 root.mainloop()  # for window continuously showing
