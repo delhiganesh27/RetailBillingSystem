@@ -3,8 +3,9 @@ from tkinter import *
 
 root = Tk()
 root.title("Retail Billing System")
-root.geometry("1270x675")
+# root.geometry("1270x675+0+0")
 root.iconbitmap("bill_120383.ico")
+root.state("zoomed")
 
 headingLabel = Label(
     root,
@@ -15,7 +16,7 @@ headingLabel = Label(
     bd=12,
     relief=GROOVE,  # for border styling
 )
-headingLabel.pack(fill=X)  # fill the entire width label
+headingLabel.pack(fill=X, pady=2)  # fill the entire width label
 
 # custor details frame
 customDeFrame = LabelFrame(
@@ -27,7 +28,7 @@ customDeFrame = LabelFrame(
     bg="gray20",
     relief=GROOVE,
 )  # only you can see this after adding contents
-customDeFrame.pack(fill=X)
+customDeFrame.pack(fill=X, pady=4)
 
 nameLabel = Label(
     customDeFrame,
@@ -73,7 +74,7 @@ searchButton.grid(row=0, column=6, padx=20, pady=8)
 productFrame = Frame(root)
 # diff btw frame and label frame class is frame does not have a label but label frame have label
 
-productFrame.pack(fill=X)  # pack simply pack everything one after another
+productFrame.pack(fill=X, pady=4)  # pack simply pack everything one after another
 
 cosmeticsFrame = LabelFrame(
     productFrame,
@@ -96,7 +97,7 @@ bathSoupLabel = Label(
 bathSoupLabel.grid(sticky="w", row=0, column=0, padx=8, pady=5)
 
 bathSoupEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
-bathSoupEntry.grid(row=0, column=1, padx=8, pady=5, sticky="w")
+bathSoupEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
 
 faceCreamLabel = Label(
     cosmeticsFrame,
@@ -105,10 +106,10 @@ faceCreamLabel = Label(
     bg="gray20",
     fg="white",
 )
-faceCreamLabel.grid(row=1, column=0, padx=8, pady=5)
+faceCreamLabel.grid(row=1, column=0, padx=10, pady=5)
 
 faceCreamEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
-faceCreamEntry.grid(sticky="w", row=1, column=1, padx=8, pady=5)
+faceCreamEntry.grid(sticky="w", row=1, column=1, padx=10, pady=5)
 
 faceWashLabel = Label(
     cosmeticsFrame,
@@ -117,7 +118,7 @@ faceWashLabel = Label(
     bg="gray20",
     fg="white",
 )
-faceWashLabel.grid(sticky="w", row=2, column=0, padx=8, pady=5)
+faceWashLabel.grid(sticky="w", row=2, column=0, padx=10, pady=5)
 
 faceWashEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 faceWashEntry.grid(row=2, column=1, padx=8, pady=5, sticky="w")
@@ -129,7 +130,7 @@ hairSprayLabel = Label(
     bg="gray20",
     fg="white",
 )
-hairSprayLabel.grid(sticky="w", row=3, column=0, padx=8, pady=5)
+hairSprayLabel.grid(sticky="w", row=3, column=0, padx=10, pady=5)
 
 hairSprayEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 hairSprayEntry.grid(row=3, column=1, padx=8, pady=5)
@@ -141,10 +142,10 @@ hairGelLabel = Label(
     bg="gray20",
     fg="white",
 )
-hairGelLabel.grid(sticky="w", row=4, column=0, padx=8, pady=5)
+hairGelLabel.grid(sticky="w", row=4, column=0, padx=10, pady=5)
 
 hairGelEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
-hairGelEntry.grid(row=4, column=1, padx=8, pady=5)
+hairGelEntry.grid(row=4, column=1, padx=10, pady=5)
 
 bodyLotionLabel = Label(
     cosmeticsFrame,
@@ -153,10 +154,10 @@ bodyLotionLabel = Label(
     bg="gray20",
     fg="white",
 )
-bodyLotionLabel.grid(sticky="w", row=5, column=0, padx=8, pady=5)
+bodyLotionLabel.grid(sticky="w", row=5, column=0, padx=10, pady=5)
 
 bodyLotionEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
-bodyLotionEntry.grid(row=5, column=1, padx=8, pady=5)
+bodyLotionEntry.grid(row=5, column=1, padx=10, pady=5)
 
 
 groceryFrame = LabelFrame(
@@ -177,10 +178,10 @@ riceLabel = Label(
     bg="gray20",
     fg="white",
 )
-riceLabel.grid(sticky="w", row=0, column=0, padx=8, pady=5)
+riceLabel.grid(sticky="w", row=0, column=0, padx=10, pady=5)
 
 riceEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-riceEntry.grid(row=0, column=1, padx=8, pady=5, sticky="w")
+riceEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
 
 oilLabel = Label(
     groceryFrame,
@@ -189,10 +190,10 @@ oilLabel = Label(
     bg="gray20",
     fg="white",
 )
-oilLabel.grid(sticky="w", row=1, column=0, padx=8, pady=5)
+oilLabel.grid(sticky="w", row=1, column=0, padx=10, pady=5)
 
 oilCreamEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-oilCreamEntry.grid(row=1, column=1, padx=8, pady=5)
+oilCreamEntry.grid(row=1, column=1, padx=10, pady=5)
 
 daalLabel = Label(
     groceryFrame,
@@ -201,10 +202,10 @@ daalLabel = Label(
     bg="gray20",
     fg="white",
 )
-daalLabel.grid(sticky="w", row=2, column=0, padx=8, pady=5)
+daalLabel.grid(sticky="w", row=2, column=0, padx=10, pady=5)
 
 daalEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-daalEntry.grid(row=2, column=1, padx=8, pady=5, sticky="w")
+daalEntry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
 wheatLabel = Label(
     groceryFrame,
@@ -213,10 +214,10 @@ wheatLabel = Label(
     bg="gray20",
     fg="white",
 )
-wheatLabel.grid(sticky="w", row=3, column=0, padx=8, pady=5)
+wheatLabel.grid(sticky="w", row=3, column=0, padx=10, pady=5)
 
 wheatEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-wheatEntry.grid(row=3, column=1, padx=8, pady=5)
+wheatEntry.grid(row=3, column=1, padx=10, pady=5)
 
 sugarLabel = Label(
     groceryFrame,
@@ -225,10 +226,10 @@ sugarLabel = Label(
     bg="gray20",
     fg="white",
 )
-sugarLabel.grid(sticky="w", row=4, column=0, padx=8, pady=5)
+sugarLabel.grid(sticky="w", row=4, column=0, padx=10, pady=5)
 
 sugarEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-sugarEntry.grid(row=4, column=1, padx=8, pady=5)
+sugarEntry.grid(row=4, column=1, padx=10, pady=5)
 
 teaLabel = Label(
     groceryFrame,
@@ -237,10 +238,10 @@ teaLabel = Label(
     bg="gray20",
     fg="white",
 )
-teaLabel.grid(sticky="w", row=5, column=0, padx=8, pady=5)
+teaLabel.grid(sticky="w", row=5, column=0, padx=10, pady=5)
 
 teaEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-teaEntry.grid(row=5, column=1, padx=8, pady=5)
+teaEntry.grid(row=5, column=1, padx=10, pady=5)
 
 
 coolDrinkFrame = LabelFrame(
@@ -262,10 +263,10 @@ maazaLabel = Label(
     bg="gray20",
     fg="white",
 )
-maazaLabel.grid(sticky="w", row=0, column=0, padx=8, pady=5)
+maazaLabel.grid(sticky="w", row=0, column=0, padx=10, pady=5)
 
 maazaEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
-maazaEntry.grid(row=0, column=1, padx=8, pady=5, sticky="w")
+maazaEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
 
 pepsiLabel = Label(
     coolDrinkFrame,
@@ -274,10 +275,10 @@ pepsiLabel = Label(
     bg="gray20",
     fg="white",
 )
-pepsiLabel.grid(row=1, column=0, padx=8, pady=5, sticky="w")
+pepsiLabel.grid(row=1, column=0, padx=10, pady=5, sticky="w")
 
 pepsiEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
-pepsiEntry.grid(row=1, column=1, padx=8, pady=5)
+pepsiEntry.grid(row=1, column=1, padx=10, pady=5)
 
 spriteLabel = Label(
     coolDrinkFrame,
@@ -286,10 +287,10 @@ spriteLabel = Label(
     bg="gray20",
     fg="white",
 )
-spriteLabel.grid(sticky="w", row=2, column=0, padx=8, pady=5)
+spriteLabel.grid(sticky="w", row=2, column=0, padx=10, pady=5)
 
 spriteEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
-spriteEntry.grid(row=2, column=1, padx=8, pady=5, sticky="w")
+spriteEntry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
 dewLabel = Label(
     coolDrinkFrame,
@@ -298,10 +299,10 @@ dewLabel = Label(
     bg="gray20",
     fg="white",
 )
-dewLabel.grid(sticky="w", row=3, column=0, padx=8, pady=5)
+dewLabel.grid(sticky="w", row=3, column=0, padx=10, pady=5)
 
 dewEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
-dewEntry.grid(row=3, column=1, padx=8, pady=5)
+dewEntry.grid(row=3, column=1, padx=10, pady=5)
 
 frootiLabel = Label(
     coolDrinkFrame,
@@ -310,10 +311,10 @@ frootiLabel = Label(
     bg="gray20",
     fg="white",
 )
-frootiLabel.grid(sticky="w", row=4, column=0, padx=8, pady=5)
+frootiLabel.grid(sticky="w", row=4, column=0, padx=10, pady=5)
 
 frootiEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
-frootiEntry.grid(row=4, column=1, padx=8, pady=5)
+frootiEntry.grid(row=4, column=1, padx=10, pady=5)
 
 cocaColaLabel = Label(
     coolDrinkFrame,
@@ -322,10 +323,10 @@ cocaColaLabel = Label(
     bg="gray20",
     fg="white",
 )
-cocaColaLabel.grid(sticky="w", row=5, column=0, padx=8, pady=5)
+cocaColaLabel.grid(sticky="w", row=5, column=0, padx=10, pady=5)
 
 cocaColaEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
-cocaColaEntry.grid(row=5, column=1, padx=8, pady=5)
+cocaColaEntry.grid(row=5, column=1, padx=10, pady=5)
 
 # Bill Frame
 
@@ -346,7 +347,7 @@ scrollbar = Scrollbar(billFrame, orient=VERTICAL)
 # orient is for we want horizontal or vertical scroll bars
 scrollbar.pack(side=RIGHT, fill=Y)
 
-textArea = Text(billFrame, height=17, width=55, yscrollcommand=scrollbar.set)
+textArea = Text(billFrame, height=17, width=63, yscrollcommand=scrollbar.set)
 # yscrollcommand is to move the scrollbar automatically along with content
 
 textArea.pack()
@@ -363,7 +364,7 @@ billmenuFrame = LabelFrame(
     bg="gray20",
     relief=GROOVE,
 )
-billmenuFrame.pack()
+billmenuFrame.pack(fill=X, pady=4)
 
 cosmeticPriceLabel = Label(
     billmenuFrame,
@@ -438,5 +439,68 @@ coolDrinkTaxLabel.grid(sticky="w", row=2, column=2, padx=8, pady=5)
 coolDrinkTaxEntry = Entry(billmenuFrame, font=("arial", 15), bd=7, width=10)
 coolDrinkTaxEntry.grid(row=2, column=3, padx=8, pady=5)
 
+# button frame
+buttonFrame = Frame(billmenuFrame, bd=8, relief=GROOVE)
+buttonFrame.grid(row=0, column=4, rowspan=3, padx=30)
+
+totalBtn = Button(
+    buttonFrame,
+    text="Total",
+    font=("arial", 16, "bold"),
+    bg="gray20",
+    fg="white",
+    bd=5,
+    width=8,
+    pady=10,
+)  # when pad is mentioned here instead of grid it is internal pading
+totalBtn.grid(row=0, column=0, pady=20, padx=5)
+
+billBtn = Button(
+    buttonFrame,
+    text="Bill",
+    font=("arial", 16, "bold"),
+    bg="gray20",
+    fg="white",
+    bd=5,
+    width=8,
+    pady=10,
+)  # when pad is mentioned here instead of grid it is internal pading
+billBtn.grid(row=0, column=1, pady=20, padx=5)
+
+emailBtn = Button(
+    buttonFrame,
+    text="Email",
+    font=("arial", 16, "bold"),
+    bg="gray20",
+    fg="white",
+    bd=5,
+    width=8,
+    pady=10,
+)  # when pad is mentioned here instead of grid it is internal pading
+emailBtn.grid(row=0, column=2, pady=20, padx=5)
+
+printBtn = Button(
+    buttonFrame,
+    text="Print",
+    font=("arial", 16, "bold"),
+    bg="gray20",
+    fg="white",
+    bd=5,
+    width=8,
+    pady=10,
+)  # when pad is mentioned here instead of grid it is internal pading
+printBtn.grid(row=0, column=3, pady=20, padx=5)
+
+clearBtn = Button(
+    buttonFrame,
+    text="Print",
+    font=("arial", 16, "bold"),
+    bg="gray20",
+    fg="white",
+    bd=5,
+    width=8,
+    pady=10,
+)  # when pad is mentioned here instead of grid it is internal pading
+clearBtn.grid(row=0, column=4, pady=20, padx=5)
 
 root.mainloop()  # for window continuously showing
