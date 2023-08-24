@@ -1,4 +1,55 @@
 from tkinter import *
+from functions import *
+
+
+# functionality part
+def total():
+    soap = int(bathSoupEntry.get()) * 30
+    faceCream = int(faceCreamEntry.get()) * 40
+    faceWash = int(faceWashEntry.get()) * 80
+    hairSpray = int(hairSprayEntry.get()) * 55
+    hairgel = int(hairGelEntry.get()) * 23
+    bodyLotion = int(bodyLotionEntry.get()) * 45
+
+    totalCosPrice = soap + faceCream + faceWash + hairSpray + hairgel + bodyLotion
+    cosmeticPriceEntry.delete(0, END)
+    cosmeticPriceEntry.insert(
+        0, str(totalCosPrice) + " Rs"
+    )  # 0 indicates index of where to insert
+    cosmeticTax = totalCosPrice * 0.15
+    cosmeticTaxEntry.delete(0, END)
+    cosmeticTaxEntry.insert(0, str(cosmeticTax) + "Rs")
+
+    rice = int(riceEntry.get()) * 100
+    oil = int(oilEntry.get()) * 180
+    daal = int(daalEntry.get()) * 150
+    wheat = int(wheatEntry.get()) * 120
+    sugar = int(sugarEntry.get()) * 200
+    tea = int(teaEntry.get()) * 100
+
+    totalGroceryPrice = rice + oil + daal + wheat + sugar + tea
+    groceryPriceEntry.delete(0, END)
+    groceryPriceEntry.insert(0, str(totalGroceryPrice) + " Rs")
+    groceryTax = totalGroceryPrice * 0.05
+    groceryTaxEntry.delete(0, END)
+    groceryTaxEntry.insert(0, str(groceryTax) + "Rs")
+
+    maaza = int(maazaEntry.get()) * 50
+    pepsi = int(pepsiEntry.get()) * 50
+    sprite = int(spriteEntry.get()) * 50
+    dew = int(dewEntry.get()) * 50
+    frooti = int(frootiEntry.get()) * 50
+    coca = int(cocaColaEntry.get()) * 50
+
+    totalDrinkPrice = maaza + pepsi + sprite + dew + frooti + coca
+    coolDrinkPriceEntry.delete(0, END)
+    coolDrinkPriceEntry.insert(0, str(totalDrinkPrice) + " Rs")
+    coolDrinkTax = totalDrinkPrice * 0.1
+    coolDrinkTaxEntry.delete(0, END)
+    coolDrinkTaxEntry.insert(0, str(coolDrinkTax) + "Rs")
+
+
+# GUI part
 
 
 root = Tk()
@@ -98,6 +149,9 @@ bathSoupLabel.grid(sticky="w", row=0, column=0, padx=8, pady=5)
 
 bathSoupEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 bathSoupEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
+bathSoupEntry.insert(
+    0, 0
+)  # to avoid string literal error when a null is converted into int
 
 faceCreamLabel = Label(
     cosmeticsFrame,
@@ -110,6 +164,7 @@ faceCreamLabel.grid(row=1, column=0, padx=10, pady=5)
 
 faceCreamEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 faceCreamEntry.grid(sticky="w", row=1, column=1, padx=10, pady=5)
+faceCreamEntry.insert(0, 0)
 
 faceWashLabel = Label(
     cosmeticsFrame,
@@ -122,6 +177,7 @@ faceWashLabel.grid(sticky="w", row=2, column=0, padx=10, pady=5)
 
 faceWashEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 faceWashEntry.grid(row=2, column=1, padx=8, pady=5, sticky="w")
+faceWashEntry.insert(0, 0)
 
 hairSprayLabel = Label(
     cosmeticsFrame,
@@ -134,6 +190,7 @@ hairSprayLabel.grid(sticky="w", row=3, column=0, padx=10, pady=5)
 
 hairSprayEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 hairSprayEntry.grid(row=3, column=1, padx=8, pady=5)
+hairSprayEntry.insert(0, 0)
 
 hairGelLabel = Label(
     cosmeticsFrame,
@@ -146,6 +203,7 @@ hairGelLabel.grid(sticky="w", row=4, column=0, padx=10, pady=5)
 
 hairGelEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 hairGelEntry.grid(row=4, column=1, padx=10, pady=5)
+hairGelEntry.insert(0, 0)
 
 bodyLotionLabel = Label(
     cosmeticsFrame,
@@ -158,7 +216,7 @@ bodyLotionLabel.grid(sticky="w", row=5, column=0, padx=10, pady=5)
 
 bodyLotionEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 bodyLotionEntry.grid(row=5, column=1, padx=10, pady=5)
-
+bodyLotionEntry.insert(0, 0)
 
 groceryFrame = LabelFrame(
     productFrame,
@@ -182,6 +240,7 @@ riceLabel.grid(sticky="w", row=0, column=0, padx=10, pady=5)
 
 riceEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
 riceEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
+riceEntry.insert(0, 0)
 
 oilLabel = Label(
     groceryFrame,
@@ -192,8 +251,9 @@ oilLabel = Label(
 )
 oilLabel.grid(sticky="w", row=1, column=0, padx=10, pady=5)
 
-oilCreamEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
-oilCreamEntry.grid(row=1, column=1, padx=10, pady=5)
+oilEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
+oilEntry.grid(row=1, column=1, padx=10, pady=5)
+oilEntry.insert(0, 0)
 
 daalLabel = Label(
     groceryFrame,
@@ -206,6 +266,7 @@ daalLabel.grid(sticky="w", row=2, column=0, padx=10, pady=5)
 
 daalEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
 daalEntry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
+daalEntry.insert(0, 0)
 
 wheatLabel = Label(
     groceryFrame,
@@ -218,6 +279,7 @@ wheatLabel.grid(sticky="w", row=3, column=0, padx=10, pady=5)
 
 wheatEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
 wheatEntry.grid(row=3, column=1, padx=10, pady=5)
+wheatEntry.insert(0, 0)
 
 sugarLabel = Label(
     groceryFrame,
@@ -230,6 +292,7 @@ sugarLabel.grid(sticky="w", row=4, column=0, padx=10, pady=5)
 
 sugarEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
 sugarEntry.grid(row=4, column=1, padx=10, pady=5)
+sugarEntry.insert(0, 0)
 
 teaLabel = Label(
     groceryFrame,
@@ -242,7 +305,7 @@ teaLabel.grid(sticky="w", row=5, column=0, padx=10, pady=5)
 
 teaEntry = Entry(groceryFrame, font=("arial", 15), bd=7, width=10)
 teaEntry.grid(row=5, column=1, padx=10, pady=5)
-
+teaEntry.insert(0, 0)
 
 coolDrinkFrame = LabelFrame(
     productFrame,
@@ -267,6 +330,7 @@ maazaLabel.grid(sticky="w", row=0, column=0, padx=10, pady=5)
 
 maazaEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 maazaEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
+maazaEntry.insert(0, 0)
 
 pepsiLabel = Label(
     coolDrinkFrame,
@@ -279,6 +343,7 @@ pepsiLabel.grid(row=1, column=0, padx=10, pady=5, sticky="w")
 
 pepsiEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 pepsiEntry.grid(row=1, column=1, padx=10, pady=5)
+pepsiEntry.insert(0, 0)
 
 spriteLabel = Label(
     coolDrinkFrame,
@@ -291,6 +356,7 @@ spriteLabel.grid(sticky="w", row=2, column=0, padx=10, pady=5)
 
 spriteEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 spriteEntry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
+spriteEntry.insert(0, 0)
 
 dewLabel = Label(
     coolDrinkFrame,
@@ -303,6 +369,7 @@ dewLabel.grid(sticky="w", row=3, column=0, padx=10, pady=5)
 
 dewEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 dewEntry.grid(row=3, column=1, padx=10, pady=5)
+dewEntry.insert(0, 0)
 
 frootiLabel = Label(
     coolDrinkFrame,
@@ -315,6 +382,7 @@ frootiLabel.grid(sticky="w", row=4, column=0, padx=10, pady=5)
 
 frootiEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 frootiEntry.grid(row=4, column=1, padx=10, pady=5)
+frootiEntry.insert(0, 0)
 
 cocaColaLabel = Label(
     coolDrinkFrame,
@@ -327,6 +395,7 @@ cocaColaLabel.grid(sticky="w", row=5, column=0, padx=10, pady=5)
 
 cocaColaEntry = Entry(coolDrinkFrame, font=("arial", 15), bd=7, width=10)
 cocaColaEntry.grid(row=5, column=1, padx=10, pady=5)
+cocaColaEntry.insert(0, 0)
 
 # Bill Frame
 
@@ -452,7 +521,12 @@ totalBtn = Button(
     bd=5,
     width=8,
     pady=10,
-)  # when pad is mentioned here instead of grid it is internal pading
+    command=total,
+)
+""" When using command attribute use functional name only don't put () 
+if you do instead of calling the fun after clicking btn
+it call when exection it will shows error"""
+# when pad is mentioned here instead of grid it is internal pading
 totalBtn.grid(row=0, column=0, pady=20, padx=5)
 
 billBtn = Button(
