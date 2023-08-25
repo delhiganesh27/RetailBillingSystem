@@ -1,9 +1,14 @@
 from tkinter import *
-from functions import *
+from tkinter import messagebox
+import random
 
 
 # functionality part
+bill_num = random.randint(1, 9999)
+
+
 def total():
+    global soap, faceCream
     soap = int(bathSoupEntry.get()) * 30
     faceCream = int(faceCreamEntry.get()) * 40
     faceWash = int(faceWashEntry.get()) * 80
@@ -47,6 +52,31 @@ def total():
     coolDrinkTax = totalDrinkPrice * 0.1
     coolDrinkTaxEntry.delete(0, END)
     coolDrinkTaxEntry.insert(0, str(coolDrinkTax) + "Rs")
+
+
+def bill():
+    if nameEntry.get() == "" or phoneEntry.get() == "":
+        messagebox.showerror("Error", "Customer details are missing!!!")
+    elif (
+        cosmeticPriceEntry.get() == ""
+        and groceryPriceEntry.get() == ""
+        and coolDrinkPriceEntry.get() == ""
+    ):
+        messagebox.showerror("Error", "No products are selected")
+    elif (
+        cosmeticPriceEntry.get() == "0 Rs"
+        and groceryPriceEntry.get() == "0 Rs"
+        and coolDrinkPriceEntry.get() == "0 Rs"
+    ):
+        messagebox.showerror("Error", "No products are selected")
+    else:
+        textArea.insert(END, "\t\t*Welcome Customer*")
+        textArea.insert(END, f"\nBill Number:{bill_num}")
+        textArea.insert(END, f"\nCustomer Name:{nameEntry.get()}")
+        textArea.insert(END, f"\nPhone number:+91 {phoneEntry.get()}")
+        textArea.insert(END, "\n=====================================")
+        textArea.insert(END, "\nProduct\t\tQuality\t\tPrice")
+        textArea.insert(END, "\n=====================================")
 
 
 # GUI part
@@ -538,6 +568,7 @@ billBtn = Button(
     bd=5,
     width=8,
     pady=10,
+    command=bill,
 )  # when pad is mentioned here instead of grid it is internal pading
 billBtn.grid(row=0, column=1, pady=20, padx=5)
 
