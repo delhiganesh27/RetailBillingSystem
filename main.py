@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import os, tempfile
+import smtplib
 
 # tempfile is an inbuild module to create a temprory files bcs print fun wants a temp file
 
@@ -224,10 +225,28 @@ def printBill():
 
 
 def send_email():
+    def sendMail():
+        try:
+            ob = smtplib.SMTP("smtp.gmail.com", 587)
+            ob.starttls()  # helps in establishing secure connection
+            # we need to generate a application specific password, our email password is not work heree
+            ob.login(senderEntry.get(), passwordEntry.get())
+            ob.sendmail(
+                senderEntry.get(), receiverEntry.get(), emailTextArea.get(1.0, END)
+            )
+            ob.quit()
+            messagebox.showinfo("Success", "Bill is successfully sent", parent=branch1)
+            branch1.destroy()  # once the bill is successfully send it will automat close the email window
+        except:
+            messagebox.showerror(
+                "Error", "Something went wrong, Please Try again", parent=branch1
+            )
+
     if textArea.get(1.0, END) == "\n":  # if there is no content text area is not null
         messagebox.showerror("Error", "Bill is empty")
     else:
         branch1 = Toplevel()  # we may also use Tk()
+        branch1.grab_set()
         branch1.title("Send Email")
         branch1.config(bg="gray20")
         branch1.resizable(0, 0)  # disable the maximization
@@ -277,6 +296,7 @@ def send_email():
             bd=6,
             width=23,
             relief=RIDGE,
+            show="*",
         )
         passwordEntry.grid(row=1, column=1, padx=10, pady=8)
 
@@ -328,12 +348,78 @@ def send_email():
             height=11,
         )
         emailTextArea.grid(row=2, column=0, columnspan=2)
+        emailTextArea.delete(1.0, END)
+        emailTextArea.insert(
+            END,
+            textArea.get(1.0, END).replace("=", "").replace("-", ""),
+        )
 
         sendBtn = Button(
-            branch1, text="SEND", font=("arial", 16, "bold"), width=15, bg="forestgreen"
+            branch1,
+            text="SEND",
+            font=("arial", 16, "bold"),
+            width=15,
+            bg="forestgreen",
+            command=sendMail,
         )
         sendBtn.grid(row=2, column=0, pady=20)
         branch1.mainloop()
+
+
+def clearAll():
+    bathSoapEntry.delete(0, END)
+    faceCreamEntry.delete(0, END)
+    faceWashEntry.delete(0, END)
+    hairSprayEntry.delete(0, END)
+    hairGelEntry.delete(0, END)
+    bodyLotionEntry.delete(0, END)
+
+    riceEntry.delete(0, END)
+    oilEntry.delete(0, END)
+    daalEntry.delete(0, END)
+    wheatEntry.delete(0, END)
+    sugarEntry.delete(0, END)
+    teaEntry.delete(0, END)
+
+    maazaEntry.delete(0, END)
+    pepsiEntry.delete(0, END)
+    spriteEntry.delete(0, END)
+    dewEntry.delete(0, END)
+    frootiEntry.delete(0, END)
+    cocaColaEntry.delete(0, END)
+
+    bathSoapEntry.insert(0, 0)
+    faceCreamEntry.insert(0, 0)
+    faceWashEntry.insert(0, 0)
+    hairSprayEntry.insert(0, 0)
+    hairGelEntry.insert(0, 0)
+    bodyLotionEntry.insert(0, 0)
+
+    riceEntry.insert(0, 0)
+    oilEntry.insert(0, 0)
+    daalEntry.insert(0, 0)
+    wheatEntry.insert(0, 0)
+    sugarEntry.insert(0, 0)
+    teaEntry.insert(0, 0)
+
+    maazaEntry.insert(0, 0)
+    pepsiEntry.insert(0, 0)
+    spriteEntry.insert(0, 0)
+    dewEntry.insert(0, 0)
+    frootiEntry.insert(0, 0)
+    cocaColaEntry.insert(0, 0)
+
+    cosmeticPriceEntry.delete(0, END)
+    groceryPriceEntry.delete(0, END)
+    coolDrinkPriceEntry.delete(0, END)
+    cosmeticTaxEntry.delete(0, END)
+    groceryTaxEntry.delete(0, END)
+    coolDrinkTaxEntry.delete(0, END)
+
+    textArea.delete(1.0, END)
+    nameEntry.delete(0, END)
+    phoneEntry.delete(0, END)
+    billNumEntry.delete(0, END)
 
 
 # GUI part
@@ -441,9 +527,8 @@ bathSoupLabel.grid(sticky="w", row=0, column=0, padx=8, pady=5)
 
 bathSoapEntry = Entry(cosmeticsFrame, font=("arial", 15), bd=7, width=10)
 bathSoapEntry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
-bathSoapEntry.insert(
-    0, 0
-)  # to avoid string literal error when a null is converted into int
+bathSoapEntry.insert(0, 0)
+# to avoid string literal error when a null is converted into int
 
 faceCreamLabel = Label(
     cosmeticsFrame,
@@ -869,6 +954,7 @@ clearBtn = Button(
     bd=5,
     width=8,
     pady=10,
+    command=clearAll,
 )  # when pad is mentioned here instead of grid it is internal pading
 clearBtn.grid(row=0, column=4, pady=20, padx=5)
 
